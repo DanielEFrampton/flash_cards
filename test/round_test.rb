@@ -146,4 +146,21 @@ class RoundTest < Minitest::Test
     assert_equal card2, round.current_card
   end
 
+  def test_it_can_count_number_of_turns
+    card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("What is the capital of Indiana?", "Indianapolis", :Geography)
+    card3 = Card.new("What is the capital of Arrakis?", "Arrakeen", :SF_Trivia)
+    card4 = Card.new("What is the capital of Gondor?", "Minas Tirith", :SF_Trivia)
+    deck = Deck.new([card1, card2, card3, card4])
+    round = Round.new(deck)
+
+    round.take_turn("Juneau")
+    assert_equal 1, round.turns.count
+    round.take_turn("Indianapolis")
+    assert_equal 2, round.turns.count
+    round.take_turn("Dune..?")
+    assert_equal 3, round.turns.count
+    round.take_turn("Minas Tirith")
+    assert_equal 4, round.turns.count
+  end
 end
