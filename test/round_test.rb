@@ -1,5 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'pry'
+
 require './lib/turn'
 require './lib/card'
 require './lib/deck'
@@ -195,5 +197,22 @@ class RoundTest < Minitest::Test
     round.take_turn("Minas Tirith")
 
     assert_equal 75.0, round.percent_correct
+  end
+
+  def test_it_can_calculate_percent_correct_by_category
+    card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("What is the capital of Indiana?", "Indianapolis", :Geography)
+    card3 = Card.new("What is the capital of Arrakis?", "Arrakeen", :SF_Trivia)
+    card4 = Card.new("What is the capital of Gondor?", "Minas Tirith", :SF_Trivia)
+    deck = Deck.new([card1, card2, card3, card4])
+    round = Round.new(deck)
+
+    round.take_turn("Juneau")
+    round.take_turn("Indianapolis")
+    round.take_turn("Dune..?")
+    round.take_turn("Minas Tirith")
+    
+    assert_equal 100.0, round.percent_correct_by_category(:Geography)
+    assert_equal 50.0, round.percent_correct_by_category(:SF_Trivia)
   end
 end
