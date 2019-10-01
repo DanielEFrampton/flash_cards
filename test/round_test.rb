@@ -66,7 +66,7 @@ class RoundTest < Minitest::Test
     assert_equal card1, turn1.card
   end
 
-  def test_take_turn_objects_false_or_true_depending_on_input
+  def test_take_turn_objects_true_with_correct_input
     card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     card2 = Card.new("What is the capital of Indiana?", "Indianapolis", :Geography)
     card3 = Card.new("What is the capital of Arrakis?", "Arrakeen", :SF_Trivia)
@@ -76,8 +76,33 @@ class RoundTest < Minitest::Test
 
     turn1 = round.take_turn("Juneau")
     assert turn1.correct?
+  end
+
+  def test_take_turn_objects_false_with_incorrect_input
+    card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("What is the capital of Indiana?", "Indianapolis", :Geography)
+    card3 = Card.new("What is the capital of Arrakis?", "Arrakeen", :SF_Trivia)
+    card4 = Card.new("What is the capital of Gondor?", "Minas Tirith", :SF_Trivia)
+    deck = Deck.new([card1, card2, card3, card4])
+    round = Round.new(deck)
 
     turn2 = round.take_turn("Bleuneau")
     refute turn2.correct?
   end
+
+  def test_it_pushes_turns_onto_turn_array
+    card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("What is the capital of Indiana?", "Indianapolis", :Geography)
+    card3 = Card.new("What is the capital of Arrakis?", "Arrakeen", :SF_Trivia)
+    card4 = Card.new("What is the capital of Gondor?", "Minas Tirith", :SF_Trivia)
+    deck = Deck.new([card1, card2, card3, card4])
+    round = Round.new(deck)
+    turn1 = round.take_turn("whatevs")
+
+    assert turn1, round.turns[0]
+
+    turn2 = round.take_turn("meh")
+    assert turn2, round.turns[1] 
+  end
+
 end
