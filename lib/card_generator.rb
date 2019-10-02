@@ -18,6 +18,3 @@ class CardGenerator
     end
   end
 end
-
-test_generator = CardGenerator.new("./lib/cards.txt")
-p test_generator.cards
