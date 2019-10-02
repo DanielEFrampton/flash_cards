@@ -1,5 +1,3 @@
-require 'pry'
-
 require './lib/turn'
 require './lib/card'
 require './lib/deck'
@@ -39,6 +37,6 @@ class FlashcardRunner
   end
 end
 
-# Running the runner
+# Instantiating the runner and invoking the CLI method
 game = FlashcardRunner.new
 game.start
