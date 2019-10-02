@@ -8,7 +8,7 @@ class FlashcardRunner
   attr_reader :round
 
   def initialize
-    card_generator = CardGenerator.new("./lib/cards.txt")
+    card_generator = CardGenerator.new("./data/cards.txt")
     deck = Deck.new(card_generator.cards)
     @round = Round.new(deck)
   end
