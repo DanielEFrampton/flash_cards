@@ -142,7 +142,7 @@ class RoundTest < Minitest::Test
     deck = Deck.new([card1, card2, card3, card4])
     round = Round.new(deck)
 
-    turn1 = round.take_turn("Juneau")
+    round.take_turn("Juneau")
     refute_equal card1, round.current_card
     assert_equal card1, round.deck.cards.last
     assert_equal card2, round.current_card
@@ -211,7 +211,7 @@ class RoundTest < Minitest::Test
     round.take_turn("Indianapolis")
     round.take_turn("Dune..?")
     round.take_turn("Minas Tirith")
-    
+
     assert_equal 100.0, round.percent_correct_by_category(:Geography)
     assert_equal 50.0, round.percent_correct_by_category(:SF_Trivia)
   end
