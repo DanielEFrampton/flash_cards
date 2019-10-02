@@ -1,7 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'pry'
-
+require './test/test_helper.rb'
 require './lib/turn'
 require './lib/card'
 require './lib/deck'

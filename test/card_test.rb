@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper.rb'
 require './lib/card'
 
 class CardTest < Minitest::Test
