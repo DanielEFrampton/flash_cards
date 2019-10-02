@@ -1,0 +1,4 @@
+What is the capital of Alaska?,Juneau,Geography
+What is the capital of Indiana?,Indianapolis,Geography
+What is the capital of Arrakis?,Arrakeen,SciFi_Trivia
+What is the capital of Gondor?,Minas Tirith,SciFi_Trivia
