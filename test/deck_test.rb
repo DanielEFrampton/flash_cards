@@ -7,10 +7,10 @@ class DeckTest < Minitest::Test
   attr_reader :deck, :card1, :card2, :card3, :card4, :cards
 
   def setup
-    @card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    @card2 = Card.new("What is the capital of Indiana?", "Indianapolis", :Geography)
-    @card3 = Card.new("What is the capital of Arrakis?", "Arrakeen", :SF_Trivia)
-    @card4 = Card.new("What is the capital of Gondor?", "Minas Tirith", :SF_Trivia)
+    @card1 = Card.new('What is the capital of Alaska?', 'Juneau', :Geography)
+    @card2 = Card.new('What is the capital of Indiana?', 'Indianapolis', :Geography)
+    @card3 = Card.new('What is the capital of Arrakis?', 'Arrakeen', :SF_Trivia)
+    @card4 = Card.new('What is the capital of Gondor?', 'Minas Tirith', :SF_Trivia)
     @cards = [card1, card2, card3, card4]
     @deck = Deck.new(cards)
   end
@@ -34,7 +34,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_returns_empty_array_of_cards_in_nonexistant_category
-    assert_empty deck.cards_in_category("Pop Culture")
+    assert_empty deck.cards_in_category('Pop Culture')
   end
 
 end
