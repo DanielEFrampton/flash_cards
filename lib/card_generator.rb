@@ -11,10 +11,10 @@ class CardGenerator
   # Convert data in file into array of cards, returns that array
   def cards
     # Open and iterate on file contents to create individual cards, closes automatically
-    File.open(filename, "r") do |file|
+    File.open(filename, 'r') do |file|
       file.readlines.map do |line|
-        card_elements = line.chomp.split(",")
-        Card.new(card_elements[0], card_elements[1], card_elements[2].to_sym)
+        question, answer, category = line.chomp.split(',')
+        Card.new(question, answer, category.to_sym)
       end
     end
   end
